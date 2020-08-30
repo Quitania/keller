@@ -25,7 +25,7 @@ location = "keller"
 
 # Read the sensor using the configured driver and gpio
 humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_gpio)
-iso = time.ctime()
+iso = time.asctime(time.gmtime())
 # Print for debugging, uncomment the below line
 # print("[%s] Temp: %s, Humidity: %s" % (iso, temperature, humidity)) 
 # Create the JSON data structure
