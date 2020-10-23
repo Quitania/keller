@@ -1,6 +1,7 @@
 import time
 import sys
 import datetime
+import RPi.GPIO as GPIO
 import Adafruit_DHT
 from influxdb import InfluxDBClient
 
@@ -24,10 +25,17 @@ measurement = "rpi-dht22"
 location = "keller"
 
 # Read the sensor using the configured driver and gpio
-humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_gpio)
+humidity, temperature = ["None","None"] #Adafruit_DHT.read_retry(sensor, sensor_gpio)
 iso = time.asctime(time.gmtime())
+
+# Initialize GPIO
+GPIO.setmode(GPIO.BCM)
+MAGNET_GPIO = 17
+GPIO.setup(MAGNET_GPIO, GPIO.IN)
+windowState = GPIO.input(MAGNET_GPIO)
+
 # Print for debugging, uncomment the below line
-# print("[%s] Temp: %s, Humidity: %s" % (iso, temperature, humidity)) 
+print("[%s] Temp: %s, Humidity: %s, window state: %s" % (iso, temperature, humidity, windowState)) 
 # Create the JSON data structure
 data = [
 {
@@ -43,4 +51,4 @@ data = [
 }
 ]
 # Send the JSON data to InfluxDB
-client.write_points(data)
+#client.write_points(data)
