@@ -7,8 +7,26 @@ from time import sleep, localtime
 # IO.setwarnings(False)
 IO.setmode(IO.BCM)
 
-HexDigits = [0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d,
-             0x07, 0x7f, 0x6f, 0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71]
+HexDigits = [0x3f, # 0 
+             0x06, # 1 
+             0x5b, # 2
+             0x4f, # 3
+             0x66, # 4
+             0x6d, # 5 
+             0x7d, # 6
+             0x07, # 7
+             0x7f, # 8
+             0x6f, # 9
+             0x77, # A 
+             0x7c, # B 
+             0x39, # C 
+             0x5e, # D 
+             0x79, # E 
+             0x71, # F
+             0x08, # lower segment
+             0x40, # middle segment
+             0x01, # upper segment
+]
 
 ADDR_AUTO = 0x40
 ADDR_FIXED = 0x44
@@ -82,6 +100,12 @@ class TM1637:
         self.br()
         self.writeByte(0x88 + int(self.__brightness))
         self.stop()
+
+    def ShowRising(self):
+        self.Show([16, 17, 17, 18])
+
+    def ShowFalling(self):
+        self.Show([18, 17, 17, 16])
 
     def SetBrightness(self, percent):
         """Accepts percent brightness from 0 - 1"""
