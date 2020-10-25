@@ -1,4 +1,4 @@
-# keller
+# Keller
 Python scripts that support running a Raspberry Pi as temperature and humidity monitoring device.
 
 # Hardware
