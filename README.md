@@ -10,3 +10,6 @@ Python scripts that support running a Raspberry Pi as temperature and humidity m
 # Software
 - Python 2
 - InfluxDB
+
+# See also
+- https://tutorials-raspberrypi.de/ueberwachung-von-fenstern-und-tueren-mit-dem-raspberry-pi/
