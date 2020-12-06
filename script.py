@@ -17,7 +17,7 @@ client = InfluxDBClient(host, port, user, password, dbname)
 
 # Enter the sensor details
 sensor = Adafruit_DHT.DHT22
-sensor_gpio = 4
+sensor_gpio = 25
 
 # think of measurement as a SQL table, it's not...but...
 measurement = "rpi-dht22"
@@ -25,7 +25,7 @@ measurement = "rpi-dht22"
 location = "keller"
 
 # Read the sensor using the configured driver and gpio
-humidity, temperature = ["None","None"] #Adafruit_DHT.read_retry(sensor, sensor_gpio)
+humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_gpio)
 iso = time.asctime(time.gmtime())
 
 # Initialize GPIO
